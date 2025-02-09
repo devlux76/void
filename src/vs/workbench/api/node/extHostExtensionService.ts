@@ -127,7 +127,7 @@ export class ExtHostExtensionService extends AbstractExtHostExtensionService {
 			if (extensionId) {
 				performance.mark(`code/extHost/willLoadExtensionCode/${extensionId}`);
 			}
-			r = <T>(require.__$__nodeRequire ?? require /* TODO@esm drop the first */)(module.fsPath);
+			r = <T>(require.__$__nodeRequire ?? require)(module.fsPath); // Check for __$__nodeRequire and use it if available
 		} finally {
 			if (extensionId) {
 				performance.mark(`code/extHost/didLoadExtensionCode/${extensionId}`);
